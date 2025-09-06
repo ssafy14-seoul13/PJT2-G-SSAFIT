@@ -77,4 +77,29 @@ PJT2-G-SSAFIT/
 - **라이브러리/프레임워크** : Bootstrap Framework
 
 ## 실행화면 캡쳐본
-![메인 페이지]([https://github.com/ssafy14-seoul13/PJT2-G-SSAFIT/issues/13#issue-3390013964](https://private-user-images.githubusercontent.com/221253299/486406502-984979ab-7bdb-4bb1-bca5-87b3917004a4.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTcxNjAyMDEsIm5iZiI6MTc1NzE1OTkwMSwicGF0aCI6Ii8yMjEyNTMyOTkvNDg2NDA2NTAyLTk4NDk3OWFiLTdiZGItNGJiMS1iY2E1LTg3YjM5MTcwMDRhNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwOTA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDkwNlQxMTU4MjFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jOGJiZTgzMjExZTljY2Q2ZWNkNGFlMTVkMjU2NmIyYTEzMjEwOWU4OTA5OTE4NGJhZjQ3N2I3ZGU1YTkwNDM4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.UytrfMWTbLXH3Ni6v8ZPwIudvIuLz8Mdfclxz2SsxCE))
+## 실행화면 캡쳐본
+
+### 1. 로그인 페이지
+![로그인 페이지](https://github.com/username/repo-name/assets/12345678/abcd-efgh)
+
+### 2. 회원가입 모달
+![회원가입 모달](https://github.com/username/repo-name/assets/12345678/ijkl-mnop)
+
+### 3. 로그인 후 메인 페이지
+![로그인 후 메인 페이지](https://github.com/username/repo-name/assets/12345678/qrst-uvwx)
+
+### 4. 회원정보 관리 페이지
+![회원정보 관리](https://github.com/username/repo-name/assets/12345678/yzab-cdef)
+
+### 5. 영상 등록 모달
+![영상 등록 모달](https://github.com/username/repo-name/assets/12345678/ghij-klmn)
+
+### 6. 비디오 페이지
+![비디오 페이지](https://github.com/username/repo-name/assets/12345678/opqr-stuv)
+
+### 7. 비디오 검색 결과
+![비디오 검색](https://github.com/username/repo-name/assets/12345678/wxyz-1234)
+
+### 8. 운동 계획 추가 모달
+![운동 계획 추가](https://github.com/username/repo-name/assets/12345678/5678-90ab)
+
