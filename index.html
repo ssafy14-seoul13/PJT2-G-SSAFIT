@@ -9,10 +9,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
     <link rel="icon" href="./asset/images/cat_cutout.png" type="image/png">
-    <script src="asset/js/account.js"></script>
-    <title>SSAFIT</title>
+    <title>SSAFIT - 로그인</title>
 </head>
 
 <body>
@@ -32,136 +32,24 @@
                 <div class="col-lg-8">
                     <div class="card p-3 shadow-sm h-100">
                         <div class="card-header bg-white border-bottom-0">
-                            <ul class="nav nav-pills card-header-pills" id="videoNav" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="popular-videos-tab" data-bs-toggle="pill"
-                                        href="#popular-videos" role="tab" aria-controls="popular-videos"
-                                        aria-selected="true">인기 동영상</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="liked-videos-tab" data-bs-toggle="pill" href="#liked-videos"
-                                        role="tab" aria-controls="liked-videos" aria-selected="false">찜한 동영상</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="subscribed-videos-tab" data-bs-toggle="pill"
-                                        href="#subscribed-videos" role="tab" aria-controls="subscribed-videos"
-                                        aria-selected="false">구독한 영상</a>
-                                </li>
-                            </ul>
+                            <h5 class="text-center mb-0">인기 동영상</h5>
                         </div>
                         <div class="card-body">
-                            <div class="tab-content" id="videoNavContent">
-                                <div class="tab-pane fade show active" id="popular-videos" role="tabpanel"
-                                    aria-labelledby="popular-videos-tab">
-                                    <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-indicators" id="carouselIndicators">
-                                        </div>
-                                        <div class="carousel-inner" id="carouselInner">
-                                            <div class="carousel-item active">
-                                                <div
-                                                    class="embed-responsive embed-responsive-16by9 bg-light rounded overflow-hidden">
-                                                    <div
-                                                        class="embed-responsive-item d-flex justify-content-center align-items-center">
-                                                        <p>인기 동영상 1 (16:9 비율)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div
-                                                    class="embed-responsive embed-responsive-16by9 bg-light rounded overflow-hidden">
-                                                    <div
-                                                        class="embed-responsive-item d-flex justify-content-center align-items-center">
-                                                        <p>인기 동영상 2 (16:9 비율)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="carousel-control-prev" type="button"
-                                            data-bs-target="#videoCarousel" data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Previous</span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button"
-                                            data-bs-target="#videoCarousel" data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Next</span>
-                                        </button>
-                                    </div>
+                            <div id="popularVideoCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators" id="popularCarouselIndicators">
                                 </div>
-                                <div class="tab-pane fade" id="liked-videos" role="tabpanel"
-                                    aria-labelledby="liked-videos-tab">
-                                    <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-indicators" id="carouselIndicators">
-                                        </div>
-                                        <div class="carousel-inner" id="carouselInner">
-                                            <div class="carousel-item active">
-                                                <div
-                                                    class="embed-responsive embed-responsive-16by9 bg-light rounded overflow-hidden">
-                                                    <div
-                                                        class="embed-responsive-item d-flex justify-content-center align-items-center">
-                                                        <p>인기 동영상 1 (16:9 비율)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div
-                                                    class="embed-responsive embed-responsive-16by9 bg-light rounded overflow-hidden">
-                                                    <div
-                                                        class="embed-responsive-item d-flex justify-content-center align-items-center">
-                                                        <p>인기 동영상 2 (16:9 비율)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="carousel-control-prev" type="button"
-                                            data-bs-target="#videoCarousel" data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Previous</span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button"
-                                            data-bs-target="#videoCarousel" data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Next</span>
-                                        </button>
-                                    </div>
+                                <div class="carousel-inner" id="popularCarouselInner">
                                 </div>
-                                <div class="tab-pane fade" id="subscribed-videos" role="tabpanel"
-                                    aria-labelledby="subscribed-videos-tab">
-                                    <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-indicators" id="carouselIndicators">
-                                        </div>
-                                        <div class="carousel-inner" id="carouselInner">
-                                            <div class="carousel-item active">
-                                                <div
-                                                    class="embed-responsive embed-responsive-16by9 bg-light rounded overflow-hidden">
-                                                    <div
-                                                        class="embed-responsive-item d-flex justify-content-center align-items-center">
-                                                        <p>인기 동영상 1 (16:9 비율)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div
-                                                    class="embed-responsive embed-responsive-16by9 bg-light rounded overflow-hidden">
-                                                    <div
-                                                        class="embed-responsive-item d-flex justify-content-center align-items-center">
-                                                        <p>인기 동영상 2 (16:9 비율)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="carousel-control-prev" type="button"
-                                            data-bs-target="#videoCarousel" data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Previous</span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button"
-                                            data-bs-target="#videoCarousel" data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Next</span>
-                                        </button>
-                                    </div>
-                                </div>
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#popularVideoCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#popularVideoCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -171,54 +59,105 @@
                     <div class="card p-4 shadow-sm h-100 d-flex flex-column">
                         <h5 class="card-title text-center mb-4">로그인</h5>
                         <div class="card-body d-flex flex-column justify-content-center flex-grow-1">
-                            <form>
+                            <form id="loginForm">
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="form2Example1" class="form-control"
-                                        placeholder="Email address" />
-                                    <label class="form-label visually-hidden" for="form2Example1">Email address</label>
+                                    <input type="email" id="loginEmail" class="form-control" placeholder="Email address" required />
+                                    <label class="form-label visually-hidden" for="loginEmail">Email address</label>
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="form2Example2" class="form-control"
-                                        placeholder="Password" />
-                                    <label class="form-label visually-hidden" for="form2Example2">Password</label>
+                                    <input type="password" id="loginPassword" class="form-control" placeholder="Password" required />
+                                    <label class="form-label visually-hidden" for="loginPassword">Password</label>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col text-end">
-                                        <a href="#!">비밀번호 찾기</a>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#signupModal">비밀번호 찾기</a>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-primary w-100 mb-3">로그인</button>
+                                <button type="submit" class="btn btn-primary w-100 mb-3">로그인</button>
                                 <div class="text-center">
-                                    <p>회원이 아니신가요? <a href="#!">회원가입</a></p>
+                                    <p>회원이 아니신가요? <a href="#!" data-bs-toggle="modal" data-bs-target="#signupModal">회원가입</a></p>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div class="row mt-4">
                 <div class="col-12">
                     <div class="card p-4 shadow-sm">
-                        <h5 class="card-title text-center mb-3">운동 계획</h5>
-                        <div class="card-body">
-                            <p>이곳에 운동 계획 관련 내용이 들어갑니다.</p>
+                        <h5 class="card-title text-center mb-3">SSAFIT과 함께 운동하세요!</h5>
+                        <div class="card-body text-center">
+                            <p class="text-muted">개인 맞춤 운동 계획과 다양한 피트니스 영상으로<br>건강한 라이프스타일을 시작해보세요.</p>
+                            <div class="row mt-4">
+                                <div class="col-md-4">
+                                    <i class="fas fa-dumbbell fa-2x text-primary mb-2"></i>
+                                    <h6>개인 운동 계획</h6>
+                                    <small class="text-muted">나만의 운동 스케줄을 관리하세요</small>
+                                </div>
+                                <div class="col-md-4">
+                                    <i class="fas fa-video fa-2x text-primary mb-2"></i>
+                                    <h6>다양한 운동 영상</h6>
+                                    <small class="text-muted">전문가의 운동 가이드를 시청하세요</small>
+                                </div>
+                                <div class="col-md-4">
+                                    <i class="fas fa-heart fa-2x text-primary mb-2"></i>
+                                    <h6>찜하기 & 구독</h6>
+                                    <small class="text-muted">좋아하는 영상을 저장하고 관리하세요</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- 회원가입 모달 -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">회원가입</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signupForm">
+                        <div class="mb-3">
+                            <label for="signupEmail" class="form-label">이메일</label>
+                            <input type="email" class="form-control" id="signupEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupPassword" class="form-label">비밀번호</label>
+                            <input type="password" class="form-control" id="signupPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupPasswordConfirm" class="form-label">비밀번호 확인</label>
+                            <input type="password" class="form-control" id="signupPasswordConfirm" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupName" class="form-label">이름</label>
+                            <input type="text" class="form-control" id="signupName" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" onclick="handleSignup()">회원가입</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="ms-2 me-2">
         <br>
         ⓒ2025 Copyright: 이가은 임정인
     </footer>
 
-    
-    <script src="./main.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- 페이지 전용 JS -->
-    <script src="asset/js/account.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
