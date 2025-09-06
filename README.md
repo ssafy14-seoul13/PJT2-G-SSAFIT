@@ -77,6 +77,8 @@ PJT2-G-SSAFIT/
 ## 실행화면 캡쳐본
 
 ### 1. 로그인 페이지
+#### ✔ 등록된 영상들이 carousel로 자동 슬라이딩되며 홍보됨
+carousel
 ![로그인 페이지](https://github.com/user-attachments/assets/984979ab-7bdb-4bb1-bca5-87b3917004a4)
 
 ### 2. 회원가입 모달
