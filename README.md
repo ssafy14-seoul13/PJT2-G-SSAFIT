@@ -79,7 +79,7 @@ PJT2-G-SSAFIT/
 ## 실행화면 캡쳐본
 
 ### 1. 로그인 페이지
-![로그인 페이지](https://github.com/user-attachments/assets/6c947271-ef2d-49a8-a089-6023fde65829)
+![로그인 페이지](https://github.com/user-attachments/assets/984979ab-7bdb-4bb1-bca5-87b3917004a4)
 
 ### 2. 회원가입 모달
 ![회원가입 모달](https://github.com/username/repo-name/assets/12345678/ijkl-mnop)
