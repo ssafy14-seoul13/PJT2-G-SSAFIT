@@ -16,25 +16,25 @@
 
 ## 프로젝트 폴더 구조
 SSAFIT2/
-├── PJT2-G-SSAFIT/
-│   ├── .vscode/
-│   │   └── launch.json
-│   ├── asset/
-│   │   ├── images/
-│   │   └── json/
-│   │       └── video.json
-│   ├── js/
-│   │   ├── account.js
-│   │   ├── dashboard.js
-│   │   ├── main.js
-│   │   └── video.js
-│   ├── pages/
-│   │   ├── account.html
-│   │   ├── dashboard.html
-│   │   ├── video.html
-│   │   └── index.html
-│   ├── README.md
-│   └── style.css
+└─ PJT2-G-SSAFIT/
+   ├─ .vscode/
+   │  └─ launch.json
+   ├─ asset/
+   │  ├─ images/
+   │  └─ json/
+   │     └─ video.json
+   ├─ js/
+   │  ├─ account.js
+   │  ├─ dashboard.js
+   │  ├─ main.js
+   │  └─ video.js
+   ├─ pages/
+   │  ├─ account.html
+   │  ├─ dashboard.html
+   │  └─ video.html
+   ├─ index.html
+   ├─ README.md
+   └─ style.css
 
 
 ### 1. 영상 정보 관리 (필수)
