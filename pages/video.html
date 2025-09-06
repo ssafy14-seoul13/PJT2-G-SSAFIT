@@ -1,130 +1,255 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link href="./style.css" rel="stylesheet">
-    <link rel="icon" href="./asset/images/cat_cutout.png" type="image/png">
-    <script src="asset/js/account.js"></script>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- style.css 는 루트에 있으므로 ../ 필요 -->
+    <link href="../style.css" rel="stylesheet" />
+    <!-- 파비콘 이미지 경로 수정 -->
+    <link rel="icon" href="../asset/images/cat_cutout.png" type="image/png" />
     <title>SSAFIT</title>
-</head>
-<body>
-     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand fw-bold fs-1" href="#">
-                    <img src="./asset/images/cat_cutout.png" alt="SSAFIT Logo" class="ms-2 me-2" width="50" height="50">
-                    SSAFIT
-                </a>
-            </div>
-        </nav>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold fs-1" href="#">
+            <img
+              src="../asset/images/cat_cutout.png"
+              alt="SSAFIT Logo"
+              class="ms-2 me-2"
+              width="50"
+              height="50"
+            />
+            SSAFIT
+          </a>
+        </div>
+      </nav>
     </header>
-    <main>
-<main class="container-lg my-4">
 
-  <div class="row g-4">
-    <!-- 좌측: 검색/필터 사이드바 -->
-    <aside class="col-md-3">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h6 class="fw-bold mb-3">검색/필터</h6>
+    <main class="container-lg my-4">
+      <div class="row g-4">
+        <!-- 좌측: 검색/필터 -->
+        <aside class="col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <!-- 영상 등록 버튼 (여기에 추가!) -->
+              <div class="d-grid mb-3">
+                <button
+                  class="btn btn-success"
+                  data-bs-toggle="modal"
+                  data-bs-target="#videoCreateModal"
+                >
+                  <i class="bi bi-plus-circle"></i> 영상 등록
+                </button>
+              </div>
+              <h6 class="fw-bold mb-3">검색/필터</h6>
 
-          <!-- 카테고리별 -->
-          <div class="mb-3">
-            <label class="form-label small text-secondary">운동 부위별</label>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="part" id="part1" checked>
-              <label class="form-check-label" for="part1">팔</label>
+              <!-- 운동 부위별 -->
+              <div class="mb-3">
+                <label class="form-label small text-secondary"
+                  >운동 부위별</label
+                >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="part"
+                    id="part-all"
+                    checked
+                  />
+                  <label class="form-check-label" for="part-all">전체</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="part"
+                    id="part-upper"
+                  />
+                  <label class="form-check-label" for="part-upper">상체</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="part"
+                    id="part-lower"
+                  />
+                  <label class="form-check-label" for="part-lower">하체</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="part"
+                    id="part-core"
+                  />
+                  <label class="form-check-label" for="part-core">복부</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="part"
+                    id="part-full"
+                  />
+                  <label class="form-check-label" for="part-full">전신</label>
+                </div>
+              </div>
+
+              <!-- 영상 길이 -->
+              <div class="mb-3">
+                <label class="form-label small text-secondary">영상 길이</label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="shortOnly"
+                  />
+                  <label class="form-check-label" for="shortOnly"
+                    >5분 이내</label
+                  >
+                </div>
+              </div>
+
+              <!-- 검색 버튼 -->
+              <div class="d-grid mt-3">
+                <button id="filterBtn" class="btn btn-primary">
+                  <i class="bi bi-search"></i> 검색
+                </button>
+              </div>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="part" id="part2">
-              <label class="form-check-label" for="part2">다리</label>
+          </div>
+          <!-- ✅ 검색 결과(카드 리스트) -->
+          <hr class="my-3" />
+          <div id="results">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="small text-secondary">검색 결과</span>
+              <span id="resultCount" class="badge text-bg-secondary">0</span>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="part" id="part3">
-              <label class="form-check-label" for="part3">등</label>
+            <div
+              id="resultCards"
+              class="mt-2 d-grid gap-2"
+              style="max-height: 420px; overflow: auto"
+            ></div>
+          </div>
+        </aside>
+
+        <!-- 우측: 영상 상세 -->
+        <section class="col-md-9">
+          <!-- 영상 정보 -->
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div>
+              <h5 id="video-title" class="mb-1">영상 제목</h5>
+              <p id="video-channel" class="text-secondary small mb-0">채널명</p>
+              <p id="video-duration" class="text-secondary small mb-0">
+                길이: 0분
+              </p>
+            </div>
+
+            <!-- 찜 버튼 + 개수 -->
+            <div class="d-flex align-items-center gap-2">
+              <button id="likeBtn" class="btn btn-outline-danger btn-sm">
+                <i class="bi bi-heart"></i> 찜하기
+              </button>
+              <div class="d-flex align-items-center">
+                <i class="bi bi-heart-fill text-danger"></i>
+                <span id="likeCount" class="ms-1">0</span>
+              </div>
             </div>
           </div>
 
-          <!-- 인기순 -->
-          <div class="mb-3">
-            <label class="form-label small text-secondary">정렬</label>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="sort" id="sort1">
-              <label class="form-check-label" for="sort1">인기순</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="sort" id="sort2">
-              <label class="form-check-label" for="sort2">조회순</label>
-            </div>
+          <!-- 영상 플레이어 -->
+          <div class="ratio ratio-16x9 mb-4">
+            <iframe src="" title="Video player" allowfullscreen></iframe>
           </div>
 
-          <!-- 영상 길이 -->
-          <div>
-            <label class="form-label small text-secondary">영상 길이</label>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="shortOnly">
-              <label class="form-check-label" for="shortOnly">5분 이내</label>
+          <!-- 리뷰 영역 -->
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h6 class="fw-bold mb-3">리뷰</h6>
+
+              <!-- 리뷰 목록 -->
+              <div id="review-list" class="mb-3"></div>
+
+              <!-- 리뷰 입력 -->
+              <form id="review-form" class="d-flex gap-2">
+                <input
+                  id="review-input"
+                  type="text"
+                  class="form-control"
+                  placeholder="리뷰를 입력하세요"
+                />
+                <button class="btn btn-primary">등록</button>
+              </form>
             </div>
           </div>
-        </div>
+        </section>
       </div>
-    </aside>
-
-    <!-- 우측: 영상 상세 -->
-    <section class="col-md-9">
-      <!-- 영상 정보 -->
-      <div class="d-flex align-items-center justify-content-between mb-3">
-        <div class="d-flex align-items-center gap-3">
-          <img src="https://picsum.photos/80" alt="채널 이미지" class="rounded-circle" style="width:60px;height:60px;">
-          <div>
-            <h5 class="mb-1">채널이름</h5>
-            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-person-plus"></i> 팔로우</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 영상 플레이어 -->
-      <div class="ratio ratio-16x9 mb-4">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Video player" allowfullscreen></iframe>
-      </div>
-
-      <!-- 리뷰 영역 -->
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h6 class="fw-bold mb-3">리뷰</h6>
-
-          <!-- 리뷰 목록 -->
-          <div class="mb-3">
-            <div class="mb-2"><strong>유규봉</strong> <span class="text-secondary small">힘드네요...</span></div>
-            <div class="mb-2"><strong>이가은</strong> <span class="text-secondary small">뿌듯해요!!</span></div>
-          </div>
-
-          <!-- 리뷰 입력 -->
-          <form class="d-flex gap-2">
-            <input type="text" class="form-control" placeholder="리뷰를 입력하세요">
-            <button class="btn btn-primary">등록</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </div>
-</main>
-
     </main>
+
     <footer class="ms-2 me-2">
-        <br>
-        ⓒ2025 Copyright: 이가은 임정인
+      <br />
+      ⓒ2025 Copyright: 이가은 임정인
     </footer>
+
     <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- 페이지 전용 JS -->
-<script src="asset/js/account.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- video.js 경로 수정 -->
+    <script src="../js/video.js"></script>
+    <!-- 영상 등록 모달 -->
+<div class="modal fade" id="videoCreateModal" tabindex="-1" aria-labelledby="videoCreateLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="videoCreateForm" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="videoCreateLabel">영상 등록</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="cv-title" class="form-label">제목</label>
+          <input id="cv-title" type="text" class="form-control" placeholder="영상 제목" required>
+        </div>
+        <div class="mb-3">
+          <label for="cv-url" class="form-label">YouTube URL</label>
+          <input id="cv-url" type="url" class="form-control" placeholder="https://youtu.be/… 또는 https://www.youtube.com/watch?v=…" required>
+          <div class="form-text">watch/shorts/공유 링크 모두 입력 가능. 자동으로 임베드 형식으로 변환됩니다.</div>
+        </div>
+        <div class="mb-3">
+          <label for="cv-channel" class="form-label">채널명</label>
+          <input id="cv-channel" type="text" class="form-control" placeholder="채널명" required>
+        </div>
+        <div class="mb-3">
+          <label for="cv-part" class="form-label">부위</label>
+          <select id="cv-part" class="form-select" required>
+            <option value="전신">전신</option>
+            <option value="상체">상체</option>
+            <option value="하체">하체</option>
+            <option value="복부">복부</option>
+          </select>
+        </div>
+        <div class="mb-2">
+          <label for="cv-duration" class="form-label">길이(분)</label>
+          <input id="cv-duration" type="number" min="0" step="1" class="form-control" placeholder="예: 7" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">취소</button>
+        <button id="btnCreateVideo" type="submit" class="btn btn-primary">등록</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  </body>
 </html>
