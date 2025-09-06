@@ -8,10 +8,10 @@ function getThumbnailUrl(videoId) {
     return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 }
 
-// 개별 비디오 페이지 URL 생성 함수
-function getVideoDetailUrl(videoId) {
-    return `video-detail.html?id=${videoId}`;
-}
+// // 개별 비디오 페이지 URL 생성 함수
+// function getVideoDetailUrl(videoId) {
+//     return `video-detail.html?id=${videoId}`;
+// }
 
 // 비디오 캐러셀을 동적으로 생성하는 범용 함수
 function createVideoCarousel(containerId, videos) {
@@ -47,7 +47,7 @@ function createVideoCarousel(containerId, videos) {
         carouselItem.className = `carousel-item ${index === 0 ? 'active' : ''}`;
 
         carouselItem.innerHTML = `
-            <a href="${getVideoDetailUrl(video.id)}" class="text-decoration-none">
+            <a href="./video.html" class="text-decoration-none">
                 <div class="position-relative">
                     <img src="${getThumbnailUrl(video.id)}" 
                          class="d-block w-100" 

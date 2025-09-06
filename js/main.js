@@ -8,10 +8,10 @@ function getWatchUrl(videoId) {
     return `https://www.youtube.com/watch?v=${videoId}`;
 }
 
-// 개별 비디오 페이지 URL 생성 함수
-function getVideoDetailUrl(videoId) {
-    return `video-detail.html?id=${videoId}`;
-}
+// // 개별 비디오 페이지 URL 생성 함수
+// function getVideoDetailUrl(videoId) {
+//     return `video-detail.html?id=${videoId}`;
+// }
 
 // 캐러셀 동적 생성 함수
 function createCarousel(videos) {
@@ -42,7 +42,7 @@ function createCarousel(videos) {
         carouselItem.className = `carousel-item ${index === 0 ? 'active' : ''}`;
 
         carouselItem.innerHTML = `
-            <a href="${getVideoDetailUrl(video.id)}" class="text-decoration-none">
+            <a href="../pages/video.html" class="text-decoration-none">
                 <div class="position-relative">
                     <img src="${getThumbnailUrl(video.id)}" 
                          class="d-block w-100" 
