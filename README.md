@@ -79,7 +79,7 @@ PJT2-G-SSAFIT/
 ## 실행화면 캡쳐본
 
 ### 1. 로그인 페이지
-![로그인 페이지](https://private-user-images.githubusercontent.com/221253299/486406502-984979ab-7bdb-4bb1-bca5-87b3917004a4.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTcxNjA1NjgsIm5iZiI6MTc1NzE2MDI2OCwicGF0aCI6Ii8yMjEyNTMyOTkvNDg2NDA2NTAyLTk4NDk3OWFiLTdiZGItNGJiMS1iY2E1LTg3YjM5MTcwMDRhNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwOTA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDkwNlQxMjA0MjhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04MTk2ZTNmMzhmOTlkMGJhMjI5OWVkZDJkMDI0NjdiMGViOTRmY2FlOGQ0YmQ2NTYxZDFhNjhlMGIwOTFmMTU4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.LXzUCbbvY7pJ4Q_zzgE4B8MANDa5SKDegx9ZySg1Qvc)
+![로그인 페이지](https://github.com/user-attachments/assets/6c947271-ef2d-49a8-a089-6023fde65829)
 
 ### 2. 회원가입 모달
 ![회원가입 모달](https://github.com/username/repo-name/assets/12345678/ijkl-mnop)
