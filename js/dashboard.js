@@ -1,3 +1,14 @@
+// dashboard.js
+
+// ===== 공통 상수/유틸 =====
+const STORAGE_KEY = 'ssafit:user';
+const SESSION_KEY = 'ssafit:session';
+
+function readUser() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+}
+
 // 로그아웃 함수
 function logout() {
     window.location.href = '../index.html';
@@ -8,10 +19,10 @@ function getThumbnailUrl(videoId) {
     return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 }
 
-// // 개별 비디오 페이지 URL 생성 함수
-// function getVideoDetailUrl(videoId) {
-//     return `video-detail.html?id=${videoId}`;
-// }
+// 개별 비디오 페이지 URL 생성 함수
+function getVideoDetailUrl(videoId) {
+    return `video-detail.html?id=${videoId}`;
+}
 
 // 비디오 캐러셀을 동적으로 생성하는 범용 함수
 function createVideoCarousel(containerId, videos) {
@@ -42,15 +53,23 @@ function createVideoCarousel(containerId, videos) {
         document.querySelector(`#${containerId.replace('Inner', 'Carousel')} .carousel-control-next`).style.display = '';
     }
 
-    videos.forEach((video, index) => {
+    // 비디오 ID 중복 제거를 위한 Map
+    const uniqueVideos = new Map();
+    videos.forEach(video => {
+        if (!uniqueVideos.has(video.id)) {
+            uniqueVideos.set(video.id, video);
+        }
+    });
+
+    Array.from(uniqueVideos.values()).forEach((video, index) => {
         const carouselItem = document.createElement('div');
         carouselItem.className = `carousel-item ${index === 0 ? 'active' : ''}`;
 
         carouselItem.innerHTML = `
-            <a href="./video.html" class="text-decoration-none">
+            <a href="${getVideoDetailUrl(video.id)}" class="text-decoration-none">
                 <div class="position-relative">
-                    <img src="${getThumbnailUrl(video.id)}" 
-                         class="d-block w-100" 
+                    <img src="${getThumbnailUrl(video.id)}"
+                         class="d-block w-100"
                          alt="${video.title}"
                          style="height: 450px; object-fit: cover;"
                          onerror="this.src='https://via.placeholder.com/1280x720/cccccc/666666?text=Video+Thumbnail'">
@@ -76,13 +95,57 @@ function createVideoCarousel(containerId, videos) {
     });
 }
 
+// YouTube URL에서 비디오 ID 추출 함수 (추가)
+function getYouTubeId(url) {
+    if (!url) return null;
+    let id = '';
+    url = url.replace(/(>|<)/gi, '').split(/(\/embed\/|\/v\/|\/watch\?v=|\/youtu.be\/|\/shorts\/)/);
+    if (url[2] !== undefined) {
+        id = url[2].split(/[^0-9a-z_\-]/i);
+        id = id[0];
+    } else {
+        id = url[0];
+    }
+    return id;
+}
+
 // 가상 사용자 정보 및 데이터 로드 함수
 async function loadUserData() {
+    // 1. 기존 video.json 파일의 영상 목록을 가져옵니다.
     const popularVideosResponse = await fetch('../asset/json/video.json');
     const popularVideos = await popularVideosResponse.json();
 
+    const user = readUser();
+    const displayUserName = user?.nickname || user?.email || '방문자';
+
+    // 2. 로컬 스토리지에서 사용자가 추가한 '계획' 비디오를 가져옵니다.
+    const plans = JSON.parse(localStorage.getItem('workoutPlans') || '{}');
+    const plannedVideos = [];
+    for (const day in plans) {
+        plans[day].forEach(plan => {
+            if (plan.videoId) {
+                plannedVideos.push({
+                    id: plan.videoId,
+                    title: `${plan.part} - ${plan.memo || '운동 영상'}`,
+                    channelName: '나의 계획'
+                });
+            }
+        });
+    }
+
+    // 3. 로컬 스토리지에서 사용자가 직접 '등록'한 비디오를 가져옵니다.
+    const uploadedVideos = JSON.parse(localStorage.getItem('ssafit:customVideos') || '[]');
+
+    // 4. 세 가지 영상 목록(인기, 계획, 등록)을 모두 합칩니다. 중복은 제거합니다.
+    const combinedVideos = new Map();
+    [...popularVideos, ...plannedVideos, ...uploadedVideos].forEach(video => {
+        if (!combinedVideos.has(video.id)) {
+            combinedVideos.set(video.id, video);
+        }
+    });
+
     const userInfo = {
-        userName: 'SSAFY',
+        userName: displayUserName,
         followingCount: 5,
         followerCount: 10,
         likedVideos: popularVideos.slice(0, 3),
@@ -92,24 +155,21 @@ async function loadUserData() {
         ]
     };
 
-    document.getElementById('userName').textContent = userInfo.userName;
+    // UI 업데이트
+    const greetingEl = document.getElementById('userName');
+    if (greetingEl) {
+        greetingEl.textContent = userInfo.userName;
+    }
+    const profileNameEl = document.querySelector('.text-center .fw-bold');
+    if (profileNameEl) {
+        profileNameEl.textContent = userInfo.userName;
+    }
     document.getElementById('followingCount').textContent = userInfo.followingCount;
     document.getElementById('followerCount').textContent = userInfo.followerCount;
     document.getElementById('likedCount').textContent = `${userInfo.likedVideos.length}개`;
     document.getElementById('subscriptionCount').textContent = `${userInfo.subscriptions.length}명`;
 
-    return { popularVideos, userInfo };
-}
-
-// 가상으로 구독 채널의 영상 목록을 가져오는 함수
-async function getVideosFromSubscriptions(subscriptions) {
-    const allVideos = await fetch('../asset/json/video.json').then(res => res.json());
-    
-    const subscribedVideos = allVideos.filter(video => 
-        subscriptions.some(sub => sub.name === video.channelName)
-    );
-    
-    return subscribedVideos;
+    return { popularVideos: Array.from(combinedVideos.values()), userInfo };
 }
 
 // 운동 계획을 로컬 스토리지에서 로드하고 화면에 표시하는 함수
@@ -125,6 +185,12 @@ function loadWorkoutPlans() {
                 plans[day].forEach((plan, index) => {
                     const planElement = document.createElement('div');
                     planElement.className = 'd-flex align-items-start my-2 p-2 border rounded bg-light';
+
+                    let videoLink = '';
+                    if (plan.videoId) {
+                        videoLink = `<a href="${getVideoDetailUrl(plan.videoId)}" class="text-decoration-none ms-auto"><i class="bi bi-play-circle-fill fs-4 text-primary"></i></a>`;
+                    }
+
                     planElement.innerHTML = `
                         <input type="checkbox" class="form-check-input mt-1 me-2" id="plan-${day}-${index}" ${plan.completed ? 'checked' : ''}>
                         <div class="flex-grow-1">
@@ -133,6 +199,7 @@ function loadWorkoutPlans() {
                                 ${plan.memo ? `<p class="mb-0 small text-muted">${plan.memo}</p>` : ''}
                             </label>
                         </div>
+                        ${videoLink}
                     `;
                     container.appendChild(planElement);
                 });
@@ -142,6 +209,7 @@ function loadWorkoutPlans() {
         }
     });
 }
+
 
 // 운동 계획 저장 버튼 클릭 이벤트 리스너
 function setupSavePlanButton() {
@@ -166,7 +234,7 @@ function setupSavePlanButton() {
             }
             
             // 새 계획을 추가합니다.
-            plans[day].push({ part, time, memo, completed: false });
+            plans[day].push({ part, time, memo, completed: false, videoId: 'e2kRk25a07c' });
             
             // 변경된 계획을 로컬 스토리지에 저장합니다.
             localStorage.setItem('workoutPlans', JSON.stringify(plans));
@@ -183,6 +251,66 @@ function setupSavePlanButton() {
         });
     }
 }
+
+// 영상 등록 버튼 이벤트 리스너 (추가)
+function setupVideoCreateButton() {
+    const createVideoBtn = document.getElementById('btnCreateVideo');
+    if (createVideoBtn) {
+        createVideoBtn.addEventListener('click', function(event) {
+            event.preventDefault(); // 폼 전송 방지
+
+            const form = document.getElementById('videoCreateForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const title = document.getElementById('cv-title').value.trim();
+            const url = document.getElementById('cv-url').value.trim();
+            const channelName = document.getElementById('cv-channel').value.trim();
+            const part = document.getElementById('cv-part').value;
+            const duration = document.getElementById('cv-duration').value;
+            const videoId = getYouTubeId(url); // YouTube URL에서 비디오 ID 추출
+            const myEmail = readUser()?.email;
+
+            if (!videoId) {
+                alert('올바른 YouTube URL을 입력해주세요.');
+                return;
+            }
+
+            // localStorage에서 기존 영상 목록을 가져옵니다.
+            const uploadedVideos = JSON.parse(localStorage.getItem('ssafit:customVideos') || '[]');
+
+            // 새 영상 정보를 추가합니다.
+            const newVideo = {
+                id: videoId,
+                title: title,
+                channelName: channelName,
+                part: part,
+                duration: duration,
+                url: `https://www.youtube.com/embed/${videoId}`,
+                ownerEmail: myEmail
+            };
+            uploadedVideos.push(newVideo);
+            
+            // 변경된 영상 목록을 localStorage에 저장합니다.
+            localStorage.setItem('ssafit:customVideos', JSON.stringify(uploadedVideos));
+
+            // 모달을 닫습니다.
+            const videoCreateModal = bootstrap.Modal.getInstance(document.getElementById('videoCreateModal'));
+            videoCreateModal.hide();
+            
+            // 폼을 초기화합니다.
+            form.reset();
+            
+            alert('영상이 성공적으로 등록되었습니다!');
+            
+            // 캐러셀을 다시 로드하여 변경사항 반영
+            loadAndRenderCarousels();
+        });
+    }
+}
+
 
 // 체크박스 클릭 이벤트 리스너 설정
 function setupCheckboxListeners() {
@@ -206,17 +334,18 @@ function setupCheckboxListeners() {
     });
 }
 
-// DOM 로드 완료 후 실행
-document.addEventListener('DOMContentLoaded', async function() {
+// 캐러셀 및 운동 계획 로드 및 렌더링을 위한 통합 함수 (추가)
+async function loadAndRenderCarousels() {
     const { popularVideos, userInfo } = await loadUserData();
-    
+
+    // '인기 영상' 캐러셀을 업데이트된 popularVideos로 생성
     createVideoCarousel('popularCarouselInner', popularVideos);
 
     const tabButtons = document.querySelectorAll('[data-bs-toggle="pill"]');
     tabButtons.forEach(button => {
         button.addEventListener('shown.bs.tab', async function(event) {
             const targetTab = event.target.getAttribute('href');
-            
+
             if (targetTab === '#liked-videos') {
                 createVideoCarousel('likedCarouselInner', userInfo.likedVideos);
             } else if (targetTab === '#subscribed-videos') {
@@ -230,10 +359,19 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // 페이지 로드 시 저장된 운동 계획을 표시
     loadWorkoutPlans();
-    
+}
+
+
+// DOM 로드 완료 후 실행
+document.addEventListener('DOMContentLoaded', async function() {
+    loadAndRenderCarousels();
+
     // 저장 버튼에 이벤트 리스너 설정
     setupSavePlanButton();
 
+    // 영상 등록 버튼에 이벤트 리스너 설정
+    setupVideoCreateButton();
+    
     // 체크박스에 이벤트 리스너 설정
     setupCheckboxListeners();
 
@@ -243,61 +381,3 @@ document.addEventListener('DOMContentLoaded', async function() {
         new bootstrap.Modal(workoutPlanModal);
     }
 });
-
-// dashboard.js 파일의 수정된 내용
-
-// ===== 공통 상수/유틸 추가 =====
-// account.js와 동일한 유틸리티 함수를 추가하여 localStorage에서 사용자 정보를 읽어옵니다.
-const STORAGE_KEY = 'ssafit:user';
-const SESSION_KEY = 'ssafit:session';
-
-function readUser() {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
-}
-
-// ===== 기존 loadUserData 함수를 아래 코드로 대체 =====
-async function loadUserData() {
-    const popularVideosResponse = await fetch('../asset/json/video.json');
-    const popularVideos = await popularVideosResponse.json();
-
-    // 로컬 스토리지에서 사용자 정보 객체를 읽어옵니다.
-    const user = readUser();
-
-    // 사용자 정보가 없으면 기본값 설정
-    const displayUserName = user?.nickname || user?.email || 'SSAFY';
-
-    const userInfo = {
-        userName: displayUserName,
-        // 나머지 데이터는 기존과 동일하게 유지
-        followingCount: 5,
-        followerCount: 10,
-        likedVideos: popularVideos.slice(0, 3),
-        subscriptions: [
-            { id: 'UCbF7uD01oK8vNf0d_s4', name: 'Smash Mouth' },
-            { id: 'UCtGq44s_523cO2t6Qx0d', name: 'Darude' }
-        ]
-    };
-
-    // HTML 요소 업데이트
-    // 첫 번째 '안녕하세요, OOO님' 텍스트를 업데이트합니다.
-    const greetingEl = document.getElementById('userName');
-    if (greetingEl) {
-        greetingEl.textContent = userInfo.userName;
-    }
-    
-    // 두 번째 프로필 사진 아래의 사용자명을 업데이트합니다.
-    const profileNameEl = document.querySelector('.text-center .fw-bold');
-    if (profileNameEl) {
-        profileNameEl.textContent = userInfo.userName;
-    }
-
-    document.getElementById('followingCount').textContent = userInfo.followingCount;
-    document.getElementById('followerCount').textContent = userInfo.followerCount;
-    document.getElementById('likedCount').textContent = `${userInfo.likedVideos.length}개`;
-    document.getElementById('subscriptionCount').textContent = `${userInfo.subscriptions.length}명`;
-
-    return { popularVideos, userInfo };
-}
-
-// ... 나머지 dashboard.js 코드는 그대로 유지 ...
