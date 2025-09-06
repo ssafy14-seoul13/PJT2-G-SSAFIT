@@ -77,7 +77,7 @@ SSAFIT2/
 ## 실행화면 캡쳐본
 <img width="1540" height="952" alt="Image" src="https://github.com/user-attachments/assets/f6e00310-8351-4c31-9211-3aa2e40b10e3" />
 
-<img width="1543" height="958" alt="Image" src="https://github.com/user-attachments/assets/03fd0
+<img width="1543" height="958" alt="Image" src="https://github.com/user-attachments/assets/22bd2ef1-d13a-4d14-aa98-473f3fceda0c" />
 
 <img width="1543" height="957" alt="Image" src="https://github.com/user-attachments/assets/56869e1b-1375-49ef-887e-a09f8c20c4d4" />
 
