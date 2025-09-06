@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
     <link rel="icon" href="./asset/images/cat_cutout.png" type="image/png">
-    <script src="asset/js/account.js"></script>
+    <!-- <script src="./asset/js/account.js"></script> -->
     <title>SSAFIT</title>
 </head>
 
@@ -53,36 +53,18 @@
                             <div class="tab-content" id="videoNavContent">
                                 <div class="tab-pane fade show active" id="popular-videos" role="tabpanel"
                                     aria-labelledby="popular-videos-tab">
-                                    <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-indicators" id="carouselIndicators">
+                                    <div id="popularVideoCarousel" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-indicators" id="popularCarouselIndicators">
                                         </div>
-                                        <div class="carousel-inner" id="carouselInner">
-                                            <div class="carousel-item active">
-                                                <div
-                                                    class="embed-responsive embed-responsive-16by9 bg-light rounded overflow-hidden">
-                                                    <div
-                                                        class="embed-responsive-item d-flex justify-content-center align-items-center">
-                                                        <p>인기 동영상 1 (16:9 비율)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div
-                                                    class="embed-responsive embed-responsive-16by9 bg-light rounded overflow-hidden">
-                                                    <div
-                                                        class="embed-responsive-item d-flex justify-content-center align-items-center">
-                                                        <p>인기 동영상 2 (16:9 비율)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="carousel-inner" id="popularCarouselInner">
                                         </div>
                                         <button class="carousel-control-prev" type="button"
-                                            data-bs-target="#videoCarousel" data-bs-slide="prev">
+                                            data-bs-target="#popularVideoCarousel" data-bs-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Previous</span>
                                         </button>
                                         <button class="carousel-control-next" type="button"
-                                            data-bs-target="#videoCarousel" data-bs-slide="next">
+                                            data-bs-target="#popularVideoCarousel" data-bs-slide="next">
                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Next</span>
                                         </button>
@@ -90,36 +72,19 @@
                                 </div>
                                 <div class="tab-pane fade" id="liked-videos" role="tabpanel"
                                     aria-labelledby="liked-videos-tab">
-                                    <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-indicators" id="carouselIndicators">
+                                    <div id="likedVideoCarousel" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-indicators" id="likedCarouselIndicators">
                                         </div>
-                                        <div class="carousel-inner" id="carouselInner">
-                                            <div class="carousel-item active">
-                                                <div
-                                                    class="embed-responsive embed-responsive-16by9 bg-light rounded overflow-hidden">
-                                                    <div
-                                                        class="embed-responsive-item d-flex justify-content-center align-items-center">
-                                                        <p>인기 동영상 1 (16:9 비율)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div
-                                                    class="embed-responsive embed-responsive-16by9 bg-light rounded overflow-hidden">
-                                                    <div
-                                                        class="embed-responsive-item d-flex justify-content-center align-items-center">
-                                                        <p>인기 동영상 2 (16:9 비율)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="carousel-inner" id="likedCarouselInner">
+                                        <div>로그인 후 이용해주세요.</div>
                                         </div>
                                         <button class="carousel-control-prev" type="button"
-                                            data-bs-target="#videoCarousel" data-bs-slide="prev">
+                                            data-bs-target="#likedVideoCarousel" data-bs-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Previous</span>
                                         </button>
                                         <button class="carousel-control-next" type="button"
-                                            data-bs-target="#videoCarousel" data-bs-slide="next">
+                                            data-bs-target="#likedVideoCarousel" data-bs-slide="next">
                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Next</span>
                                         </button>
@@ -127,36 +92,19 @@
                                 </div>
                                 <div class="tab-pane fade" id="subscribed-videos" role="tabpanel"
                                     aria-labelledby="subscribed-videos-tab">
-                                    <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-indicators" id="carouselIndicators">
+                                    <div id="subscribedVideoCarousel" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-indicators" id="subscribedCarouselIndicators">
                                         </div>
-                                        <div class="carousel-inner" id="carouselInner">
-                                            <div class="carousel-item active">
-                                                <div
-                                                    class="embed-responsive embed-responsive-16by9 bg-light rounded overflow-hidden">
-                                                    <div
-                                                        class="embed-responsive-item d-flex justify-content-center align-items-center">
-                                                        <p>인기 동영상 1 (16:9 비율)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div
-                                                    class="embed-responsive embed-responsive-16by9 bg-light rounded overflow-hidden">
-                                                    <div
-                                                        class="embed-responsive-item d-flex justify-content-center align-items-center">
-                                                        <p>인기 동영상 2 (16:9 비율)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="carousel-inner" id="subscribedCarouselInner">
+                                            <div>로그인 후 이용해주세요.</div>
                                         </div>
                                         <button class="carousel-control-prev" type="button"
-                                            data-bs-target="#videoCarousel" data-bs-slide="prev">
+                                            data-bs-target="#subscribedVideoCarousel" data-bs-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Previous</span>
                                         </button>
                                         <button class="carousel-control-next" type="button"
-                                            data-bs-target="#videoCarousel" data-bs-slide="next">
+                                            data-bs-target="#subscribedVideoCarousel" data-bs-slide="next">
                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Next</span>
                                         </button>
@@ -201,7 +149,7 @@
                     <div class="card p-4 shadow-sm">
                         <h5 class="card-title text-center mb-3">운동 계획</h5>
                         <div class="card-body">
-                            <p>이곳에 운동 계획 관련 내용이 들어갑니다.</p>
+                            <p>로그인 후 이용해주세요.</p>
                         </div>
                     </div>
                 </div>
@@ -214,11 +162,11 @@
     </footer>
 
     
-    <script src="./main.js"></script>
+    <script src="./js/main.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- 페이지 전용 JS -->
-    <script src="asset/js/account.js"></script>
+    <!-- <script src="./asset/js/account.js"></script> -->
 </body>
 
 </html>
