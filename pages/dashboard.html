@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+    <link rel="icon" href="../asset/images/cat_cutout.png" type="image/png">
+    <title>SSAFIT - 대시보드</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold fs-1" href="#">
+                    <img src="../asset/images/cat_cutout.png" alt="SSAFIT Logo" class="ms-2 me-2" width="50"
+                        height="50">
+                    SSAFIT
+                </a>
+                <div class="navbar-nav ms-auto">
+                    <span class="navbar-text me-3">안녕하세요, <span id="userName">사용자</span>님!</span>
+                    <button class="btn btn-outline-secondary" onclick="logout()">로그아웃</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container mt-5">
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-8">
+                    <div class="card p-3 shadow-sm h-100">
+                        <div class="card-header bg-white border-bottom-0">
+                            <ul class="nav nav-pills card-header-pills justify-content-between" id="videoNav"
+                                role="tablist">
+                                <div class="d-flex">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="popular-videos-tab" data-bs-toggle="pill"
+                                            href="#popular-videos" role="tab" aria-controls="popular-videos"
+                                            aria-selected="true">인기 동영상</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="liked-videos-tab" data-bs-toggle="pill"
+                                            href="#liked-videos" role="tab" aria-controls="liked-videos"
+                                            aria-selected="false">찜한 동영상</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="subscribed-videos-tab" data-bs-toggle="pill"
+                                            href="#subscribed-videos" role="tab" aria-controls="subscribed-videos"
+                                            aria-selected="false">구독한 영상</a>
+                                    </li>
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline-primary btn-sm"
+                                        onclick="location.href='video-list.html'">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content" id="videoNavContent">
+                                <div class="tab-pane fade show active" id="popular-videos" role="tabpanel"
+                                    aria-labelledby="popular-videos-tab">
+                                    <div id="popularVideoCarousel" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-indicators" id="popularCarouselIndicators">
+                                        </div>
+                                        <div class="carousel-inner" id="popularCarouselInner">
+                                        </div>
+                                        <button class="carousel-control-prev" type="button"
+                                            data-bs-target="#popularVideoCarousel" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                            data-bs-target="#popularVideoCarousel" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="liked-videos" role="tabpanel"
+                                    aria-labelledby="liked-videos-tab">
+                                    <div id="likedVideoCarousel" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-indicators" id="likedCarouselIndicators">
+                                        </div>
+                                        <div class="carousel-inner" id="likedCarouselInner">
+                                        </div>
+                                        <button class="carousel-control-prev" type="button"
+                                            data-bs-target="#likedVideoCarousel" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                            data-bs-target="#likedVideoCarousel" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="subscribed-videos" role="tabpanel"
+                                    aria-labelledby="subscribed-videos-tab">
+                                    <div id="subscribedVideoCarousel" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-indicators" id="subscribedCarouselIndicators">
+                                        </div>
+                                        <div class="carousel-inner" id="subscribedCarouselInner">
+                                        </div>
+                                        <button class="carousel-control-prev" type="button"
+                                            data-bs-target="#subscribedVideoCarousel" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                            data-bs-target="#subscribedVideoCarousel" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card p-4 shadow-sm h-100 d-flex flex-column">
+                        <div class="text-center mb-4">
+                            <img src="../asset/images/cat_cutout.png" alt="프로필 이미지" class="rounded-circle mb-3"
+                                style="width: 120px; height: 120px; object-fit: cover;">
+                            <h5 class="fw-bold">사용자 이름</h5>
+                            <div class="d-flex justify-content-center gap-3 mb-3">
+                                <span class="text-muted small">팔로잉: <span id="followingCount">0</span>명</span>
+                                <span class="text-muted small">팔로워: <span id="followerCount">0</span>명</span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="video-upload.html" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-video me-1"></i> 영상등록
+                                </a>
+                                <a href="./account.html" class="btn btn-outline-secondary btn-sm">
+                                    <i class="fas fa-cog me-1"></i> 회원 관리
+                                </a>
+                            </div>
+                        </div>
+
+                        <hr class="my-3">
+
+                        <h5 class="card-title text-center mb-4">내 운동 기록</h5>
+                        <div class="card-body d-flex flex-column justify-content-center flex-grow-1">
+                            <div class="text-center mb-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="border rounded p-2">
+                                            <i class="fas fa-fire text-warning fa-2x mb-1"></i>
+                                            <div class="fw-bold">7일</div>
+                                            <small class="text-muted">연속 운동</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="border rounded p-2">
+                                            <i class="fas fa-clock text-info fa-2x mb-1"></i>
+                                            <div class="fw-bold">480분</div>
+                                            <small class="text-muted">이번 주 운동</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="border rounded p-2">
+                                            <i class="fas fa-heart text-danger fa-2x mb-1"></i>
+                                            <div class="fw-bold" id="likedCount">0개</div>
+                                            <small class="text-muted">찜한 영상</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="border rounded p-2">
+                                            <i class="fas fa-users text-success fa-2x mb-1"></i>
+                                            <div class="fw-bold" id="subscriptionCount">0명</div>
+                                            <small class="text-muted">구독</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card p-4 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="card-title mb-0">운동 계획</h5>
+                                <button class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#workoutPlanModal">
+                                    <i class="fas fa-plus me-2"></i>계획 추가
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <!-- 요일 헤더 -->
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="text-center fw-bold text-primary border-bottom pb-2">월</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="text-center fw-bold text-primary border-bottom pb-2">화</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="text-center fw-bold text-primary border-bottom pb-2">수</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="text-center fw-bold text-primary border-bottom pb-2">목</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="text-center fw-bold text-primary border-bottom pb-2">금</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="text-center fw-bold text-primary border-bottom pb-2">토</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="text-center fw-bold text-primary border-bottom pb-2">일</div>
+                                    </div>
+                                </div>
+
+                                <!-- 운동 계획 내용 -->
+                                <div class="row" style="min-height: 200px;">
+                                    <div class="col">
+                                        <div id="monday-plans" class="workout-plans h-100">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="tuesday-plans" class="workout-plans h-100">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="wednesday-plans" class="workout-plans h-100">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="thursday-plans" class="workout-plans h-100">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="friday-plans" class="workout-plans h-100">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="saturday-plans" class="workout-plans h-100">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="sunday-plans" class="workout-plans h-100">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <!-- 운동 계획 추가 모달 -->
+    <div class="modal fade" id="workoutPlanModal" tabindex="-1" aria-labelledby="workoutPlanModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="workoutPlanModalLabel">운동 계획 추가</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="workoutPlanForm">
+                        <div class="mb-3">
+                            <label for="workoutDay" class="form-label">요일</label>
+                            <select class="form-select" id="workoutDay" required>
+                                <option value="">요일을 선택하세요</option>
+                                <option value="monday">월요일</option>
+                                <option value="tuesday">화요일</option>
+                                <option value="wednesday">수요일</option>
+                                <option value="thursday">목요일</option>
+                                <option value="friday">금요일</option>
+                                <option value="saturday">토요일</option>
+                                <option value="sunday">일요일</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="workoutPart" class="form-label">운동 부위</label>
+                            <select class="form-select" id="workoutPart" required>
+                                <option value="">운동 부위를 선택하세요</option>
+                                <option value="가슴">가슴</option>
+                                <option value="등">등</option>
+                                <option value="어깨">어깨</option>
+                                <option value="팔">팔</option>
+                                <option value="하체">하체</option>
+                                <option value="복근">복근</option>
+                                <option value="유산소">유산소</option>
+                                <option value="전신">전신</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="workoutTime" class="form-label">운동 시간 (분)</label>
+                            <input type="number" class="form-control" id="workoutTime" min="1" max="300" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="workoutMemo" class="form-label">메모 (선택사항)</label>
+                            <textarea class="form-control" id="workoutMemo" rows="3"
+                                placeholder="운동에 대한 추가적인 메모를 남겨보세요."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" id="savePlanBtn">저장</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="ms-2 me-2">
+        <br>
+        ⓒ2025 Copyright: 이가은 임정인
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../js/dashboard.js"></script>
+
+</body>
+
+</html>

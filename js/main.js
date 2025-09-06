@@ -155,3 +155,88 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// 로그인 처리
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    handleLogin();
+});
+
+function handleLogin() {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    // 실제로는 서버로 요청을 보내야 하지만, 여기서는 localStorage 시뮬레이션
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+        // 로그인 성공
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        alert('로그인 성공!');
+        window.location.href = './pages/dashboard.html';
+    } else {
+        alert('이메일 또는 비밀번호가 올바르지 않습니다.');
+    }
+}
+
+function handleSignup() {
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const passwordConfirm = document.getElementById('signupPasswordConfirm').value;
+    const name = document.getElementById('signupName').value;
+
+    if (!email || !password || !passwordConfirm || !name) {
+        alert('모든 필드를 입력해주세요.');
+        return;
+    }
+
+    if (password !== passwordConfirm) {
+        alert('비밀번호가 일치하지 않습니다.');
+        return;
+    }
+
+    // 기존 사용자 확인
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    if (users.find(u => u.email === email)) {
+        alert('이미 가입된 이메일입니다.');
+        return;
+    }
+
+    // 새 사용자 생성 (샘플 데이터 포함)
+    const newUser = {
+        id: Date.now(),
+        email: email,
+        password: password,
+        name: name,
+        likedVideos: ['dQw4w9WgXcQ'], // 샘플 찜한 영상
+        subscriptions: ['UCuAXFkgsw1L7xaCfnd5JJOw'], // 샘플 구독 채널
+        workoutPlans: {
+            monday: [{ part: '가슴', time: 60, memo: '벤치프레스 위주' }],
+            tuesday: [{ part: '등', time: 90, memo: '' }],
+            wednesday: [],
+            thursday: [{ part: '하체', time: 120, memo: '스쿼트 데드리프트' }],
+            friday: [{ part: '어깨', time: 75, memo: '' }],
+            saturday: [{ part: '팔', time: 60, memo: '' }, { part: '복근', time: 20, memo: '' }],
+            sunday: []
+        }
+    };
+
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+
+    alert('회원가입이 완료되었습니다!');
+    
+    // 모달 닫기 및 폼 리셋
+    const modal = bootstrap.Modal.getInstance(document.getElementById('signupModal'));
+    modal.hide();
+    document.getElementById('signupForm').reset();
+}
+
+// // 페이지 로드 시 이미 로그인된 사용자 확인
+// window.addEventListener('load', function() {
+//     const currentUser = localStorage.getItem('currentUser');
+//     if (currentUser) {
+//         window.location.href = './pages/dashboard.html';
+//     }
+// });
