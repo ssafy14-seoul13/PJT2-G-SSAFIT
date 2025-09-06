@@ -36,8 +36,7 @@ PJT2-G-SSAFIT/
 ├─ index.html
 ├─ README.md
 └─ style.css
-
-
+```
 
 ### 1. 영상 정보 관리 (필수)
 
@@ -85,20 +84,20 @@ PJT2-G-SSAFIT/
 ![회원가입 모달](https://github.com/username/repo-name/assets/12345678/ijkl-mnop)
 
 ### 3. 로그인 후 메인 페이지
-![로그인 후 메인 페이지](https://github.com/username/repo-name/assets/12345678/qrst-uvwx)
+![로그인 후 메인 페이지](https://github.com/user-attachments/assets/4f55c021-e128-42b4-9c27-78a0f7b6716f)
 
 ### 4. 회원정보 관리 페이지
-![회원정보 관리](https://github.com/username/repo-name/assets/12345678/yzab-cdef)
+![회원정보 관리](https://github.com/user-attachments/assets/a313ef0d-91a3-4bf0-90dd-33854520b726)
 
 ### 5. 영상 등록 모달
-![영상 등록 모달](https://github.com/username/repo-name/assets/12345678/ghij-klmn)
+![영상 등록 모달](https://github.com/user-attachments/assets/be6b1058-f632-432a-b9bb-a6ee42cf50c7)
 
 ### 6. 비디오 페이지
-![비디오 페이지](https://github.com/username/repo-name/assets/12345678/opqr-stuv)
+![비디오 페이지](https://github.com/user-attachments/assets/77588374-ddef-45ba-8450-59e7c0d1321f)
 
 ### 7. 비디오 검색 결과
-![비디오 검색](https://github.com/username/repo-name/assets/12345678/wxyz-1234)
+![비디오 검색](https://github.com/user-attachments/assets/972fb97d-0b74-4141-8bfd-4721f979aa48)
 
 ### 8. 운동 계획 추가 모달
-![운동 계획 추가](https://github.com/username/repo-name/assets/12345678/5678-90ab)
+![운동 계획 추가](https://github.com/user-attachments/assets/28a43ac7-0f60-4308-85e8-0cb7aedc2a41)
 
