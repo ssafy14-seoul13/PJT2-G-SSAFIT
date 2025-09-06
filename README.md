@@ -81,10 +81,10 @@ PJT2-G-SSAFIT/
 ![로그인 페이지](https://github.com/user-attachments/assets/984979ab-7bdb-4bb1-bca5-87b3917004a4)
 
 ### 2. 회원가입 모달
-![회원가입 모달](https://github.com/username/repo-name/assets/12345678/ijkl-mnop)
+![회원가입 모달](https://github.com/user-attachments/assets/4f55c021-e128-42b4-9c27-78a0f7b6716f)
 
 ### 3. 로그인 후 메인 페이지
-![로그인 후 메인 페이지](https://github.com/user-attachments/assets/4f55c021-e128-42b4-9c27-78a0f7b6716f)
+![로그인 후 메인 페이지](https://github.com/user-attachments/assets/d506735a-a924-48cf-ab36-1c885bfb8c2e)
 
 ### 4. 회원정보 관리 페이지
 ![회원정보 관리](https://github.com/user-attachments/assets/a313ef0d-91a3-4bf0-90dd-33854520b726)
