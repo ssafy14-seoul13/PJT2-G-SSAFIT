@@ -77,22 +77,4 @@ PJT2-G-SSAFIT/
 - **라이브러리/프레임워크** : Bootstrap Framework
 
 ## 실행화면 캡쳐본
-![실행 화면 1](https://github.com/user-attachments/assets/f6e00310-8351-4c31-9211-3aa2e40b10e3)
 
-![실행 화면 1]([img width="1540" height="952" alt="Image" src="https://github.com/user-attachments/assets/f6e00310-8351-4c31-9211-3aa2e40b10e3](https://github.com/user-attachments/assets/f6e00310-8351-4c31-9211-3aa2e40b10e3)
-)
-<img width="1540" height="952" alt="Image" src="https://github.com/user-attachments/assets/f6e00310-8351-4c31-9211-3aa2e40b10e3" />
-
-<img width="1543" height="958" alt="Image" src="https://github.com/user-attachments/assets/22bd2ef1-d13a-4d14-aa98-473f3fceda0c" />
-
-<img width="1543" height="957" alt="Image" src="https://github.com/user-attachments/assets/56869e1b-1375-49ef-887e-a09f8c20c4d4" />
-
-<img width="1543" height="958" alt="Image" src="https://github.com/user-attachments/assets/a1a453ed-6705-436d-acbf-a90835d85266" />
-
-<img width="1543" height="958" alt="Image" src="https://github.com/user-attachments/assets/888d7255-af2f-45f1-9519-06fdae1084e1" />
-
-<img width="1543" height="958" alt="Image" src="https://github.com/user-attachments/assets/a4a8b68a-01aa-4a22-9a9b-1531d93a2c1c" />
-
-<img width="1543" height="958" alt="Image" src="https://github.com/user-attachments/assets/85bba9dd-4d12-451a-bddc-60f5117302ac" />
-
-<img width="1544" height="958" alt="Image" src="https://github.com/user-attachments/assets/a64072a9-3410-4a46-a6d2-031308a873dc" />
